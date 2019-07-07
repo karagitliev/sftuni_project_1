@@ -30,9 +30,7 @@ def write_user_data(new_user, number):
     if number in data.keys():
         print(f'\nA contact with the number {number} already exists, would you like to update it?')
 
-        update_options = '''\nPlease choose an option:
--------------------------------------
-
+        update_options = '''\n-- Please choose an option --
 1 - Yes
 2 - No
 '''
@@ -47,7 +45,7 @@ def write_user_data(new_user, number):
         while usr_inp not in update_options_items.keys():
             usr_inp = input('Please enter a valid number (1 or 2): ')
 
-        if usr_inp == "1":
+        if usr_inp == '1':
             data[number] = new_user
             print('\nUpdate successful!')
         else:
@@ -122,5 +120,10 @@ def delete_user_data(param, req_type):
     if choice == 'y':
         with open(DATABASE) as f:
             data = json.load(f)
+
+            del data[del_user]
+
+        with open(DATABASE, 'w') as outfile:
+            json.dump(data, outfile, indent=4)
 
         print(f'User with Number {del_user} was successfully deleted.')

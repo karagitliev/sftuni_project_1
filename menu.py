@@ -45,6 +45,8 @@ def search_by_name():
     resp = db.search_data(choice, 'name')
     print(resp)
 
+    return_to_menu()
+
 
 def search_by_city():
     print('\n-- Search by City --')
@@ -52,6 +54,8 @@ def search_by_city():
     choice = input('Please enter a City: ')
     resp = db.search_data(choice, 'city')
     print(resp)
+
+    return_to_menu()
 
 
 def search_by_number():
@@ -63,6 +67,8 @@ def search_by_number():
 
     resp = db.search_data(choice, 'number')
     print(resp)
+
+    return_to_menu()
 
 
 def view_all_entries():
@@ -110,27 +116,22 @@ def delete_entry():
 
 
 def return_to_menu():
-    print('\nReturn to Menu or Quit')
-
-    action_options = '''\n-- Please choose an option -- :
-
--------------------------------------
-
-1 - Return
+    action_options = '''-- Please choose an option --
+1 - Return to Menu
 2 - Quit
 '''
     print(action_options)
 
     action_options_items = {
-        '1': "Return",
-        '2': "Quit"
+        '1': 'Return',
+        '2': 'Quit',
     }
 
     usr_pick = input('Enter a number: ')
     while usr_pick not in action_options_items.keys():
         usr_pick = input('Please enter a valid number (1 or 2): ')
 
-    if usr_pick == "1":
+    if usr_pick == '1':
         main_menu()
     else:
         exit(0)
