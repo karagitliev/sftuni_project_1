@@ -1,0 +1,42 @@
+{
+    "0888888888": {
+        "name": "spas",
+        "number": "0888888888",
+        "city": "varna"
+    },
+    "0777777777": {
+        "name": "ralitsa",
+        "city": "sofia",
+        "number": "0777777777"
+    },
+    "0111111111": {
+        "name": "hristo",
+        "city": "sofia",
+        "number": "0111111111"
+    },
+    "0222222222": {
+        "name": "hristo",
+        "city": "sofia",
+        "number": "0222222222"
+    },
+    "0666666666": {
+        "name": "ibrahim",
+        "city": "kosovo",
+        "number": "0666666666"
+    },
+    "12345": {
+        "name": "bmo",
+        "city": "burgas",
+        "number": "12345"
+    },
+    "12": {
+        "name": "karina",
+        "city": "plovdiv",
+        "number": "12"
+    },
+    "0333333333": {
+        "name": "alben",
+        "city": "kaspichan",
+        "number": "0333333333"
+    }
+}
