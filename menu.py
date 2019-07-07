@@ -71,23 +71,27 @@ def view_all_entries():
     resp = db.search_data('all', 'all')
     print(resp)
 
+    return_to_menu()
+
 
 def add_new_entry():
-    print('\n-- Add new Entry --')
+    new_user = {}
+
+    print('\n-- Add new entry --')
 
     name = input('Please enter the Name: ')
     city = input('Please enter the City: ')
-    number = ''
+    number = input('Please enter the Number: ')
 
-    while number == '':
-        number = input('Please enter a valid Number: ').replace(' ', '')
+    new_user['name'] = name
+    new_user['city'] = city
+    new_user['number'] = number
 
-    new_user = {
-        'name': name,
-        'city': city,
-        'number': number,
-    }
-    db.write_user_data(number, new_user)
+    while new_user['number'] == '':
+        new_user['number'] = input('Please enter a valid Number: ')
+
+    db.write_user_data(new_user, number)
+    return_to_menu()
 
 
 def delete_entry():
@@ -102,6 +106,34 @@ def delete_entry():
 
     param = input(f'Please enter the {criteria}: ').lower()
     db.delete_user_data(param, criteria)
+    return_to_menu()
+
+
+def return_to_menu():
+    print('\nReturn to Menu or Quit')
+
+    action_options = '''\n-- Please choose an option -- :
+
+-------------------------------------
+
+1 - Return
+2 - Quit
+'''
+    print(action_options)
+
+    action_options_items = {
+        '1': "Return",
+        '2': "Quit"
+    }
+
+    usr_pick = input('Enter a number: ')
+    while usr_pick not in action_options_items.keys():
+        usr_pick = input('Please enter a valid number (1 or 2): ')
+
+    if usr_pick == "1":
+        main_menu()
+    else:
+        exit(0)
 
 
 main_menu()

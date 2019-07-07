@@ -23,25 +23,38 @@ def read_user_data(param=None, req_type=None):
         return 'err', 'err'
 
 
-def write_user_data(number, user_data):
-    with open(DATABASE) as f:
-        data = json.load(f)
+def write_user_data(new_user, number):
+    with open(DATABASE) as file:
+        data = json.load(file)
 
     if number in data.keys():
-        update_info = ''
+        print(f'\nA contact with the number {number} already exists, would you like to update it?')
 
-        print(f'Number {number} is already registered, would you like to update?')
-        choice = input('Y/n: ').lower()
-        if choice == 'y':
-            if data[number]['name'] != user_data['name']:
-                update_info += f"Old Name: {data[number]['name']} -> New Name: {user_data['name']}"
-            if data[number]['city'] != user_data['city']:
-                update_info += f"\nOld City: {data[number]['city']} -> New City: {user_data['city']}"
-            data[number].update(user_data)
+        update_options = '''\nPlease choose an option:
+-------------------------------------
 
-            print(update_info)
+1 - Yes
+2 - No
+'''
+        print(update_options)
+
+        update_options_items = {
+            '1': 'Yes',
+            '2': 'No'
+        }
+
+        usr_inp = input('Enter a number: ')
+        while usr_inp not in update_options_items.keys():
+            usr_inp = input('Please enter a valid number (1 or 2): ')
+
+        if usr_inp == "1":
+            data[number] = new_user
+            print('\nUpdate successful!')
+        else:
+            print('\nNo changes were made!')
     else:
-        data[number] = user_data
+        data[number] = new_user
+        print(f'\nNew entry added successfully!')
 
     with open(DATABASE, 'w') as outfile:
         json.dump(data, outfile, indent=4)

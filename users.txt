@@ -38,5 +38,15 @@
         "name": "alben",
         "city": "kaspichan",
         "number": "0333333333"
+    },
+    "3": {
+        "name": "1",
+        "city": "2",
+        "number": "3"
+    },
+    "08765678": {
+        "name": "Tinkerbell",
+        "city": "Storybrooke",
+        "number": "08765678"
     }
 }
